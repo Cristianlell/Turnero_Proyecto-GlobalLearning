@@ -1,35 +1,58 @@
 import fs from "fs";
 import { ROLES } from "../utils/Role.js";
-const USERS = JSON.parse(fs.readFileSync('./server/db/auth.json'))
+import { USERS, createUser, findUser } from "../repositories/authRepository.js";
 
 export const login = (req, res) => {
       const { body } = req
-      res.json({ ok: true, body })
+      const user = findUser(body.email)
+
+      if (!user) {
+            return res.status(404).json({
+                  ok: false,
+                  status: 404,
+                  body: 'El email no se encuentra registrado'
+            })
+      }
+      if (user.password !== body.password) {
+            return res.status(400).json({
+                  ok: false,
+                  status: 400,
+                  body: 'Credenciales incorrectas'
+            })
+      }
+      return res.status(200).json({
+            ok: true,
+            status: 200,
+            body: {
+                  email: user.email,
+                  message: 'logged in'
+            }
+      })
+
+
 }
 
 export const register = (req, res) => {
       const { body } = req
       try {
-            const emailRegister = USERS.find(user => user.email === body.email)
+            const emailRegister = findUser(body.email)
 
             if (emailRegister) {
                   return res.status(400).json({
-                        ok: true,
+                        ok: false,
                         status: 400,
                         body: 'El email ya se encuentra registrado'
                   })
             }
             const newUser = body
-            USERS.push(newUser)
-            console.log(USERS);
-            fs.writeFileSync('./server/db/auth.json', JSON.stringify(USERS), 'utf-8')
+            createUser(newUser)
 
             return res.status(201).json({
                   ok: true,
                   status: 201,
                   body: {
-                       email: newUser.email,
-                       role:ROLES.find(role => role.id === newUser.id)
+                        email: newUser.email,
+                        role: ROLES.find(role => role.id === newUser.id)
                   }
             })
       } catch (error) {
