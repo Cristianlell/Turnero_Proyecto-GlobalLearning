@@ -4,7 +4,7 @@ import cors from "cors";
 import express from "express";
 import http from "http";
 import { Server } from "socket.io";
-import dataRoute from "./routes/dataRoute.js";
+import turnsRoute from "./routes/turnsRoute.js";
 import authRoute from "./routes/authRoute.js";
 
 const app = express();
@@ -15,7 +15,7 @@ app.use(express.json())
 app.use(cors())
 
 //Rutas
-app.use('/api/data',dataRoute)
+app.use('/api/turns',turnsRoute)
 app.use('/api/auth',authRoute)
 
 const io = new Server(server, {

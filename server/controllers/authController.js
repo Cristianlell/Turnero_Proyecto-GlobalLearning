@@ -24,6 +24,7 @@ export const login = (req, res) => {
             ok: true,
             status: 200,
             body: {
+                  userId:user.id,
                   email: user.email,
                   message: 'logged in'
             }
@@ -51,8 +52,9 @@ export const register = (req, res) => {
                   ok: true,
                   status: 201,
                   body: {
+                        userId: newUser.id,
                         email: newUser.email,
-                        role: ROLES.find(role => role.id === newUser.id)
+                        role: ROLES.find(role => role.id === newUser.roleId)
                   }
             })
       } catch (error) {
