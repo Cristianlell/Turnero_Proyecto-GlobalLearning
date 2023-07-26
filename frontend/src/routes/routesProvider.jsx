@@ -1,6 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
 import { Login } from "../pages/Login";
-import { turno as Turno } from './turno.jsx'
+import { turn as Turn } from './turn.jsx';
+import { ErrorPage } from "./error-page";
+
 export const routerProvider = createBrowserRouter([
       {
             path: '/',
@@ -8,6 +10,7 @@ export const routerProvider = createBrowserRouter([
       },
       {
             path: '/turnos',
-            element: <Turno />
+            element: <Turn />,
+            errorElement: <ErrorPage />
       }
 ])
