@@ -80,10 +80,22 @@ export const getProfessionals = (req, res) => {
             return res.status(200).json({
                   ok: true,
                   status: 200,
-                  body: {
-                        ok: true,
-                        PROFESSIONALS
-                  }
+                  body: PROFESSIONALS
+                  
+            })
+      } catch (error) {
+            return res.status(error.status).json(error.message);
+      }
+}
+
+export const getSpecialties = (req, res) => {
+      try {
+            const specialties = PROFESSIONALS.map((professional) => professional.specialty);
+            return res.status(200).json({
+                  ok: true,
+                  status: 200,
+                  body: specialties
+                  
             })
       } catch (error) {
             return res.status(error.status).json(error.message);
