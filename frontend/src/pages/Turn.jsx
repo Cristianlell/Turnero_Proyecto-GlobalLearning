@@ -19,7 +19,6 @@ export const Turn = () => {
       const { professionals, setProfessionals, specialties, setSpecialties } = useProfessional()
       const { postTurn, loading, sucess } = useTurn()
 
-      const [navigateSucess, setNavigateSucess] = useState(false)
       const [professionalId, setProfessionalId] = useState(0)
       const [professionalName, setProfessionalName] = useState([])
       const [professional, setProfessional] = useState([])
@@ -38,13 +37,6 @@ export const Turn = () => {
             setSpecialties()
             setProfessionals()
       }, [setSpecialties, setProfessionals])
-
-
-      useEffect(() => {
-            if (!sucess) {
-                  setNavigateSucess(true)
-            }
-      }, [sucess, setNavigateSucess])
 
       const handleSubmit = (e) => {
             e.preventDefault()
@@ -66,15 +58,10 @@ export const Turn = () => {
                         affiliateNumber: 'ebf12b10-48ad-45c5-96c5-62e8aa2e61da', //obtener este dato con context
                         professionalId: professionalId,
                   }
-                  console.log(body);
                   postTurn(body)
-                  if (navigateSucess) {
-                        console.log(navigateSucess);
-                        console.log(sucess);
                         setTimeout(() => {
                               navigate('/')
                         }, 5000);
-                  }
             }
             setError({ error: true, name: nameInput })
       }
