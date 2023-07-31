@@ -97,11 +97,11 @@ export const Turn = () => {
             <section className="bg-slate-800 text-white">
                   <h1 className="text-3xl text-center">Turnos</h1>
                   <form className="border-1 flex flex-col items-center " ref={formRef} onSubmit={handleSubmit}>
-                        <div className="mt-3 p-2 bg-slate-700 flex flex-col items-center w-5/6 rounded-md">
-                              <h2 className="text-slate-300 text-2xl text-center">Datos del turno</h2>
-                              <div className="form-control w-full max-w-xs ">
+                        <div className="mt-3 p-2 bg-slate-700 grid grid-cols-1 gap-4 w-5/6 rounded-md md:grid-cols-2 md:w-3/5 lg:justify-items-center">
+                              <h2 className="text-slate-300 mt-2 mb-2 text-2xl text-center md:col-span-2 ">Datos del turno</h2>
+                              <div className="form-control w-full col-span-1 lg:w-72 xl:w-80 ">
                                     <label className="label">
-                                          <span className="text-slate-400 label-text">Seleccione especialidad</span>
+                                          <span className="text-slate-300 label-text">Seleccione especialidad</span>
                                     </label>
                                     <select value={specialty} onChange={handleChangeSpecialty} name="specialty" className={error.name === "specialty" ? style.errorSelect : style.select}>
                                           <option disabled={specialty ? true : false}>Seleccione...</option>
@@ -113,9 +113,9 @@ export const Turn = () => {
                                           }
                                     </select>
                               </div>
-                              <div className="form-control w-full max-w-xs">
+                              <div className="form-control w-full col-span-1 lg:w-72 xl:w-80">
                                     <label className="label">
-                                          <span className="text-slate-400 label-text">Seleccione un profesional</span>
+                                          <span className="text-slate-300 label-text">Seleccione un profesional</span>
                                     </label>
                                     <select value={professional?.id} onChange={handleChangeProfessionalName} name="professional" className={error.name === "professional" ? style.errorSelect : style.select}>
                                           <option disabled={professional.length === 0 ? false : true}>Seleccione...</option>
@@ -131,15 +131,15 @@ export const Turn = () => {
                                     </select>
 
                               </div>
-                              <div className="form-control w-full max-w-xs">
+                              <div className="form-control w-full col-span-1 lg:w-72 xl:w-80">
                                     <label className="label">
-                                          <span className="text-slate-400 label-text">Fecha</span>
+                                          <span className="text-slate-300 label-text">Fecha</span>
                                     </label>
                                     <input type="date" min={minDate} placeholder="Type here" name="date" className={error.name === 'date' ? style.error : style.notError} />
                               </div>
-                              <div className="form-control w-full max-w-xs">
+                              <div className="form-control w-full col-span-1 mb-2 lg:w-72 xl:w-80">
                                     <label className="label">
-                                          <span className="text-slate-400 label-text">Seleccione un Horario</span>
+                                          <span className="text-slate-300 label-text">Seleccione un Horario</span>
                                     </label>
                                     <select value={hour} onChange={handleChangeHour} name="hour" className={error.name === "hour" ? style.errorSelect : style.select}>
                                           <option disabled={hour === '' ? true : false}>Seleccione...</option>
@@ -151,41 +151,41 @@ export const Turn = () => {
                                     </select>
                               </div>
                         </div>
-                        <div className="mt-3 p-2 bg-slate-700 flex flex-col items-center w-5/6 rounded-md">
-                              <h2 className="text-slate-300 text-2xl text-center">Datos del paciente</h2>
-                              <div className="form-control w-full max-w-xs">
+                        <div className="mt-3 p-2 bg-slate-700 grid grid-cols-1 gap-4 w-5/6 rounded-md md:grid-cols-2 md:w-3/5 lg:grid-cols-3 ">
+                              <h2 className="text-slate-300 mt-2 mb-2 text-2xl text-center md:col-span-2 lg:col-span-3 ">Datos del paciente</h2>
+                              <div className="form-control w-full col-span-1 ">
                                     <label className="label">
-                                          <span className="text-slate-400 label-text">Nombre</span>
+                                          <span className="text-slate-300 label-text">Nombre</span>
                                     </label>
                                     <input type="text" name="name" placeholder="Nombre" className={error.name === 'name' ? style.error : style.notError} />
                               </div>
-                              <div className="form-control w-full max-w-xs">
+                              <div className="form-control w-full col-span-1">
                                     <label className="label">
-                                          <span className="text-slate-400 label-text">Apellido</span>
+                                          <span className="text-slate-300 label-text">Apellido</span>
                                     </label>
                                     <input type="text" name="lastname" placeholder="Apellido" className={error.name === 'lastname' ? style.error : style.notError} />
                               </div>
-                              <div className="form-control w-full max-w-xs">
+                              <div className="form-control w-full col-span-1 ">
                                     <label className="label">
-                                          <span className="text-slate-400 label-text">DNI</span>
+                                          <span className="text-slate-300 label-text">DNI</span>
                                     </label>
                                     <input type="number" name="dni" placeholder="DNI" className={error.name === 'dni' ? style.error : style.notError} />
                               </div>
-                              <div className="form-control w-full max-w-xs">
+                              <div className="form-control w-full col-span-1">
                                     <label className="label">
-                                          <span className="text-slate-400 label-text">Email</span>
+                                          <span className="text-slate-300 label-text">Email</span>
                                     </label>
                                     <input type="email" name="email" placeholder="Email" className={error.name === 'email' ? style.error : style.notError} />
                               </div>
-                              <div className="form-control w-full max-w-xs">
+                              <div className="form-control w-full col-span-1">
                                     <label className="label">
-                                          <span className="text-slate-400 label-text">Teléfono</span>
+                                          <span className="text-slate-300 label-text">Teléfono</span>
                                     </label>
                                     <input type="number" name="phone" placeholder="Teléfono" className={error.name === 'phone' ? style.error : style.notError} />
                               </div>
-                              <div className="form-control w-full max-w-xs">
+                              <div className="form-control w-full col-span-1 mb-2">
                                     <label className="label">
-                                          <span className="text-slate-400 label-text">Obra social</span>
+                                          <span className="text-slate-300 label-text">Obra social</span>
                                     </label>
                                     <input onChange={handleChangeSocialWork} type="text" name="socialwork" placeholder="Obra social" className={error.name === 'socialwork' ? style.error : style.notError} />
                               </div>
