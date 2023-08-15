@@ -44,16 +44,15 @@ export const RouterProvider = createBrowserRouter([
       </WithHeader>
     ),
   },
-  /* {
+  {
     path: "/professionals",
     element: (
       <WithHeader>
-        {userData?.userType === "profesional" ? (
+        <Auth>
           <Professionals />
-        ) : (
-          <Navigate to="/" />
-        )}
+        </Auth>
       </WithHeader>
     ),
-  }, */
+  }
+
 ]);
