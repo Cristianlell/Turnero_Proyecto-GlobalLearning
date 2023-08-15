@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import './Login.css'
 import { useUserContext } from '../utils/UserContext';
 const Login = () => {
-  const { setUserData,setIsLoggedIn } = useUserContext();
+  const { setUserData,setIsLoggedin } = useUserContext();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -18,7 +18,7 @@ const Login = () => {
       console.log(userData)
     if (userData) {
         localStorage.setItem('isLoggedIn', 'true');
-        setIsLoggedIn(true);
+        setIsLoggedin(true);
         setUserData(userData); 
         /* if (userData.userType === 'profesional') {
           navigate('/professionals'); 
@@ -29,7 +29,6 @@ const Login = () => {
         alert('Cuenta inválidas');
       }
     };
-  console.log(useUserContext())
 
   return (
     <div className="login-container">
