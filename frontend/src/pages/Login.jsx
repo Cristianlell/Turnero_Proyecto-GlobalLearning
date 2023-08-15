@@ -20,11 +20,11 @@ const Login = () => {
         localStorage.setItem('isLoggedIn', 'true');
         setIsLoggedin(true);
         setUserData(userData); 
-        /* if (userData.userType === 'profesional') {
+        if (userData.userType === 'profesional') {
           navigate('/professionals'); 
-        } else { */
+        } else {
           navigate('/dashboard'); 
-        
+        }
       } else {
         alert('Cuenta inválidas');
       }

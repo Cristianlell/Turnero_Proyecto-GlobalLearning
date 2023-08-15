@@ -7,8 +7,6 @@ export const Auth = ({ children }) => {
   console.log(isLoggedin);
   if (!isLoggedin) {
     return <Navigate to='/login' />;
-  } else if (userData?.userType === 'profesional') {
-    return <Navigate to='/professionals' />;
   }
   return children;
 };
