@@ -1,11 +1,14 @@
 
-import React from 'react';
-import { Link } from 'react-router-dom';
-const Home = () => {
-  return <div>
-    Página de inicio
-    <Link to="/login">Ir a la página de inicio de sesión</Link>
-  </div>;
-};
+import TopBar from '../components/TopBar'
+import Hero from '../components/Hero'
+import Main from '../components/Main'
 
-export default Home;
+export const Home = () => {
+  return (
+    <>
+    <TopBar />
+    <Hero />
+    <Main / >
+    </>
+  )
+}

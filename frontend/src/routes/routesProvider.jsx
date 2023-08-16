@@ -1,12 +1,10 @@
-import { Navigate, createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import Login from "../pages/Login";
-import Home from "../pages/Home";
+import {Home} from "../pages/Home";
 import WithHeader from "../components/WithHeader";
 import Dashboard from "../pages/Dashboard";
 import Register from "../pages/Register";
 import Professionals from "../pages/Professionals";
-/* import { useUserContext } from './utils/UserContext'; */
-import { useUserContext } from "../utils/UserContext";
 import { Auth } from "../components/Auth";
 import { Turn } from "../pages/Turn";
 

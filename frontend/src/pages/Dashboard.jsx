@@ -6,6 +6,9 @@ import './dashboard.css'
 const Dashboard = () => {
   const navigate = useNavigate();
   const { getTurns, turns } = useTurn();
+  useEffect(() => {
+    getTurns();
+  }, [getTurns]);
 
   const handleClick = () => {
     setIsLoggedin(false);
@@ -19,15 +22,12 @@ const Dashboard = () => {
     }
   }, [isLoggedin, navigate]);
 
-  useEffect(() => {
-    getTurns();
-  }, [getTurns]);
 
-  const { body } = turns;
-  const filteredTurn = body.filter((turn) => {
+
+   const filteredTurn = turns.filter((turn) => {
     return turn.affiliateNumber === userData.dni;
   });
-  console.log(filteredTurn);
+  console.log(filteredTurn); 
 
   return (
     <div className="dashboard-container">

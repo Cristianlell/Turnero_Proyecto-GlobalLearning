@@ -66,9 +66,7 @@ export const Turn = () => {
                         professionalId: professionalId,
                   }
                   postTurn(body)
-                  setTimeout(() => {
-                        navigate('/')
-                  }, 5000);
+                  
             }
             setError({ error: true, name: nameInput })
       }
