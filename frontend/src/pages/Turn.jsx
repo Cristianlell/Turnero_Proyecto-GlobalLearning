@@ -211,7 +211,7 @@ export const Turn = () => {
                                     </button>
                                     
                         }
-                        <button> <Link to={'/dashboard'}> Go to dashboard</Link></button>
+                        <button className='mt-3 mb-2 btn btn-primary'> <Link to={'/dashboard'}>Ver Turno</Link></button>
                   </form>
                   {sucess ? <Sucess message={'Turno registrado'} /> : null}
             </section>

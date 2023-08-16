@@ -69,7 +69,7 @@ const Register = () => {
         <option value="profesional">Profesional</option>
       </select>
       <button className="register-button" onClick={handleRegister}>Crear cuenta</button>
-      <p>
+      <p className='color-p'>
         ¿Ya tienes una cuenta? <Link to="/login" className="register-link">Iniciar sesión</Link>
       </p>
     </div>

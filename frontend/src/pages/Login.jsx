@@ -1,6 +1,6 @@
 import  { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import './Login.css'
+import './login.css'
 import { useUserContext } from '../utils/UserContext';
 const Login = () => {
   const { setUserData,setIsLoggedin } = useUserContext();
@@ -48,7 +48,7 @@ const Login = () => {
       onChange={e => setPassword(e.target.value)}
     />
     <button className="login-button" onClick={handleLogin}>Iniciar sesión</button>
-    <p>No tienes una cuenta? <Link to="/register" className="login-link">Crear una cuenta</Link></p>
+    <p className='color-p'>No tienes una cuenta? <Link to="/register" className="login-link">Crear una cuenta</Link></p>
   </div>
 );
 };

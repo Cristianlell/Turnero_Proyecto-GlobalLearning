@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useUserContext } from "../utils/UserContext";
 import { useEffect } from "react";
 import { useTurn } from "../store/useTurn.js";
-
+import './dashboard.css'
 const Dashboard = () => {
   const navigate = useNavigate();
   const { getTurns, turns } = useTurn();
@@ -19,32 +19,33 @@ const Dashboard = () => {
     }
   }, [isLoggedin, navigate]);
 
-  
   useEffect(() => {
     getTurns();
   }, [getTurns]);
-  
-  const {body}= turns 
-  const filteredTun = body.filter((turn)=>{
-    turn.affiliateNumber === userData.dni;
 
-  })
-  console.log(filteredTun);
- 
+  const { body } = turns;
+  const filteredTurn = body.filter((turn) => {
+    return turn.affiliateNumber === userData.dni;
+  });
+  console.log(filteredTurn);
+
   return (
-    <div>
-      <h2>Dashboard</h2>
+    <div className="dashboard-container">
+      <h2 className="dashboard-heading">Turno/s</h2>
       {userData ? (
-        <div>
+        <div className="dashboard-user-data">
           <h3>Tus datos:</h3>
-          <p>DNI: {userData.dni}</p>
-          <p>Número de teléfono: {userData.phoneNumber}</p>
-          <p>Tipo de usuario: {userData.userType}</p>
+          <p>DNI: {filteredTurn[0]?.dni}</p>
+          <p>Especialidad: {filteredTurn[0]?.specialty}</p>
+          <p>Profesional: {filteredTurn[0]?.professional}</p>
+          <p>Horario de su turno: {filteredTurn[0]?.hour}</p>
         </div>
       ) : (
-        <p>No se encontraron datos de usuario.</p>
+        <p className="dashboard-error">No se encontraron datos de usuario.</p>
       )}
-      <button onClick={handleClick}>Cerrar sesión</button>
+      <button className="dashboard-button" onClick={handleClick}>
+        Cerrar sesión
+      </button>
     </div>
   );
 };

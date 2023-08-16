@@ -1,5 +1,5 @@
-.register-container {
-    max-width: 400px;
+.dashboard-container {
+    max-width: 800px;
     margin: 0 auto;
     padding: 20px;
     background-color: #333;
@@ -8,24 +8,26 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   }
   
-  .register-input {
-    padding: 10px;
-    width: 94%;
-    margin-bottom: 10px;
+  .dashboard-heading {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #fff;
+  }
+  
+  .dashboard-user-data {
+    margin-bottom: 20px;
+    padding: 15px;
     background-color: #444;
     border: 1px solid #555;
+    border-radius: 5px;
+  }
+  
+  .dashboard-user-data p {
+    margin: 5px 0;
     color: #ddd;
   }
   
-  .register-select {
-    padding: 10px;
-    width: 100%;
-    background-color: #444;
-    border: 1px solid #555;
-    color: #ddd;
-  }
-  
-  .register-button {
+  .dashboard-button {
     padding: 10px;
     width: 100%;
     background-color: #440000;
@@ -35,22 +37,19 @@
     transition: background-color 0.3s;
   }
   
-  .register-button:hover {
+  .dashboard-button:hover {
     background-color: #550000;
   }
   
-  .register-link {
-    color: #ff8800;
-    text-decoration: none;
+  .dashboard-error {
+    color: #ff0000;
+    margin-top: 10px;
   }
-  
-  .register-link:hover {
-    color: #ffbb33;
+
+  h3{
+    color: #fff;
   }
 
   h2{
-    color: #fff;
-  }
-  .color-p{
     color: #fff;
   }
