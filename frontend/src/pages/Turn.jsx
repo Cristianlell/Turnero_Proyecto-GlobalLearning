@@ -5,6 +5,7 @@ import { useTurn } from '../store/useTurn.js';
 import { isEmpty } from '../utils/verifyForm.js';
 import { Spinner } from '../components/Spinner'
 import { Sucess } from '../components/Sucess/index.jsx';
+import { useUserContext } from '../utils/UserContext.jsx';
 
 const style = {
       error: "input input-error text-slate-700 input-bordered border-4 w-full max-w-xs ",
@@ -15,6 +16,12 @@ const style = {
 
 export const Turn = () => {
       const navigate = useNavigate();
+      const { isLoggedin, userData } = useUserContext()
+      useEffect(() => {
+            if (!isLoggedin) {
+                  navigate('/login')
+            }
+      }, [isLoggedin, navigate])
 
       const { professionals, setProfessionals, specialties, setSpecialties } = useProfessional()
       const { postTurn, loading, sucess } = useTurn()
@@ -55,13 +62,13 @@ export const Turn = () => {
                         date: formData.get('date'),
                         hour: formData.get('hour'),
                         socialwork: formData.get('socialwork'),
-                        affiliateNumber: 'ebf12b10-48ad-45c5-96c5-62e8aa2e61da', //obtener este dato con context
+                        affiliateNumber: userData.dni,
                         professionalId: professionalId,
                   }
                   postTurn(body)
-                        setTimeout(() => {
-                              navigate('/')
-                        }, 5000);
+                  setTimeout(() => {
+                        navigate('/')
+                  }, 5000);
             }
             setError({ error: true, name: nameInput })
       }

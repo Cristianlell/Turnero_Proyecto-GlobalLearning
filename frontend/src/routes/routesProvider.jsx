@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { Navigate, createBrowserRouter } from "react-router-dom";
 import Login from "../pages/Login";
 import Home from "../pages/Home";
@@ -9,6 +8,7 @@ import Professionals from "../pages/Professionals";
 /* import { useUserContext } from './utils/UserContext'; */
 import { useUserContext } from "../utils/UserContext";
 import { Auth } from "../components/Auth";
+import { Turn } from "../pages/Turn";
 
 export const RouterProvider = createBrowserRouter([
   {
@@ -54,24 +54,14 @@ export const RouterProvider = createBrowserRouter([
         </Auth>
       </WithHeader>
     ),
+  },
+  {
+    path: "/turns",
+    element: (
+      <WithHeader>
+          <Turn/>
+      </WithHeader>
+    ),
   }
 
 ]);
-=======
-import { createBrowserRouter } from "react-router-dom";
-import { Login } from "../pages/Login";
-import { turn as Turn } from './turn.jsx';
-import { ErrorPage } from "./error-page";
-
-export const routerProvider = createBrowserRouter([
-      {
-            path: '/',
-            element: <Login />
-      },
-      {
-            path: '/turnos',
-            element: <Turn />,
-            errorElement: <ErrorPage />
-      }
-])
->>>>>>> 6a82e8ef63aea6ccdf028f7c5c2c2c17dc45a0e6
