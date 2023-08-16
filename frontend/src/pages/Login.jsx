@@ -23,7 +23,7 @@ const Login = () => {
         if (userData.userType === 'profesional') {
           navigate('/professionals'); 
         } else {
-          navigate('/dashboard'); 
+          navigate('/turns'); 
         }
       } else {
         alert('Cuenta inválidas');

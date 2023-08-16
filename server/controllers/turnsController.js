@@ -1,4 +1,4 @@
-import { PROFESSIONALS, create, turnId, edit, findAndDelete } from "../repositories/turnsRepository.js";
+import { PROFESSIONALS, create, turnId, edit, findAndDelete, TURNS } from "../repositories/turnsRepository.js";
 
 export const createTurn = (req, res) => {
       const { body } = req
@@ -95,6 +95,20 @@ export const getSpecialties = (req, res) => {
                   ok: true,
                   status: 200,
                   body: specialties
+                  
+            })
+      } catch (error) {
+            return res.status(error.status).json(error.message);
+      }
+}
+
+export const getTurns = (req, res) => {
+      try {
+            const turns = TURNS
+            return res.status(200).json({
+                  ok: true,
+                  status: 200,
+                  body: turns
                   
             })
       } catch (error) {

@@ -51,3 +51,7 @@ export const findAndDelete = (id, userId) => {
       const turns = TURNS.filter(turn => turn.id !== id && turn.affiliateNumber === userId)
       fs.writeFileSync('./server/db/turns.json', JSON.stringify(turns), 'utf-8')
 }
+
+export const turns = ()=>{
+      return TURNS;
+}

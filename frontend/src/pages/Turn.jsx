@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useProfessional } from '../store/useProfessional.js';
 import { useTurn } from '../store/useTurn.js';
 import { isEmpty } from '../utils/verifyForm.js';
@@ -209,7 +209,9 @@ export const Turn = () => {
                                                       : "Solicitar"
                                           }
                                     </button>
+                                    
                         }
+                        <button> <Link to={'/dashboard'}> Go to dashboard</Link></button>
                   </form>
                   {sucess ? <Sucess message={'Turno registrado'} /> : null}
             </section>

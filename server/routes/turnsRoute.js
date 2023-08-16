@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { createTurn, deleteTurn, editTurn, getProfessionals, getSpecialties } from "../controllers/turnsController.js";
+import { createTurn, deleteTurn, editTurn, getProfessionals, getSpecialties, getTurns } from "../controllers/turnsController.js";
 
 const router = Router()
 
@@ -9,5 +9,5 @@ router
   .post('/', createTurn)
   .put('/:id/:userId', editTurn)
   .delete('/:id/:userId', deleteTurn)
-
+  .get('/getTurns',getTurns)
 export default router

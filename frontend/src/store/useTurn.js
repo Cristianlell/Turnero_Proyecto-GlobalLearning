@@ -8,6 +8,7 @@ export const useTurn = create((set) => ({
       data: null,
       error: null,
       sucess: false,
+      turns:[],
       postTurn: async (body) => {
             set({ loading: true, data: null, error: null })
             try {
@@ -19,6 +20,19 @@ export const useTurn = create((set) => ({
             } catch (error) {
                   console.log(error);
                   set({ loading: false, error: error.message, sucess: false });
+
+            }
+      },
+      getTurns: async () => {
+            set({ loading: true, data: null, error: null })
+            try {
+                  const response = await axios.get(`${URL}/turns/getTurns`);
+                  
+                  set({ turns:response.data });
+                  
+            } catch (error) {
+                  console.log(error);
+                 
 
             }
       },

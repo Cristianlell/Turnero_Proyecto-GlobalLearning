@@ -1,8 +1,36 @@
-import { Link } from 'react-router-dom';
-import { useUserContext } from '../utils/UserContext';
-const Dashboard = (props) => {
-  const { userData, setUserData } = useUserContext();
-  console.log(userData)
+import { useNavigate } from "react-router-dom";
+import { useUserContext } from "../utils/UserContext";
+import { useEffect } from "react";
+import { useTurn } from "../store/useTurn.js";
+
+const Dashboard = () => {
+  const navigate = useNavigate();
+  const { getTurns, turns } = useTurn();
+
+  const handleClick = () => {
+    setIsLoggedin(false);
+    navigate("/login");
+  };
+
+  const { isLoggedin, userData, setIsLoggedin } = useUserContext();
+  useEffect(() => {
+    if (!isLoggedin) {
+      navigate("/dashboard");
+    }
+  }, [isLoggedin, navigate]);
+
+  
+  useEffect(() => {
+    getTurns();
+  }, [getTurns]);
+  
+  const {body}= turns 
+  const filteredTun = body.filter((turn)=>{
+    turn.affiliateNumber === userData.dni;
+
+  })
+  console.log(filteredTun);
+ 
   return (
     <div>
       <h2>Dashboard</h2>
@@ -16,12 +44,9 @@ const Dashboard = (props) => {
       ) : (
         <p>No se encontraron datos de usuario.</p>
       )}
-      <button>
-        <Link to="/login">Cerrar sesión</Link>
-      </button>
+      <button onClick={handleClick}>Cerrar sesión</button>
     </div>
   );
 };
 
 export default Dashboard;
-

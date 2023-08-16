@@ -1,7 +1,7 @@
 import { useUserContext } from '../utils/UserContext';
 import { Navigate } from 'react-router-dom';
 
-export const Auth = () => {
+export const Auth = ({children}) => {
   const { isLoggedin, userData } = useUserContext();
 
   if (!isLoggedin) {
@@ -10,4 +10,5 @@ export const Auth = () => {
   if(userData.userType === 'paciente') {
     return <Navigate to={'/turns'} />
   }
+  return children
 };
